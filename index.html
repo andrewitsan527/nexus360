@@ -6,9 +6,7 @@
 <title>GrowthEX NEXUS 360™ — Business Diagnostic Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
 :root{
   --bd:#1E3A8A;--bp:#2563EB;--ba:#3B82F6;--bl:#DBEAFE;
@@ -653,19 +651,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
         <button type="button" onclick="const i=document.getElementById('lp');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈'" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;padding:4px;color:rgba(255,255,255,.4)">👁</button>
       </div>
     </div>
-    <button class="btn-login" id="loginBtn" onclick="safeLogin()">🚀 Enter the Platform →</button>
-<script>
-function safeLogin(){
-  var maxTries=20, tries=0;
-  function attempt(){
-    tries++;
-    if(typeof doLogin==='function'){ doLogin(); }
-    else if(tries<maxTries){ setTimeout(attempt,300); }
-    else{ document.getElementById('le').textContent='⚠ Page still loading. Please refresh (F5) and try again.'; document.getElementById('le').style.display='block'; }
-  }
-  attempt();
-}
-</script>
+    <button class="btn-login" id="loginBtn" onclick="doLogin()">🚀 Enter the Platform →</button>
     <div class="lerr" id="le">⚠ Invalid credentials. Please check and retry.</div>
     <div class="lftr">
       🔒 Military-Grade Security &nbsp;·&nbsp; Strictly Confidential<br>
@@ -993,7 +979,9 @@ function safeLogin(){
 
 
 <!-- External scripts: load order guaranteed before inline code -->
-<!-- Scripts already loaded in HEAD -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 // ════════════════════════════════════════════════════════════════
@@ -3210,5 +3198,6 @@ try{document.getElementById('rts').textContent=new Date().toLocaleString();}catc
   });
 
 })(); // end initLoginFX
-
-// ── Show setup ban
+</script>
+</body>
+</html>
