@@ -610,9 +610,124 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
 .doc-item label{font-size:11px;cursor:pointer;color:var(--g7);line-height:1.4;}
 .doc-item .sub-hint{font-size:10px;color:var(--g5);font-style:italic;display:block;}
 
-@media(max-width:900px){.fgrid{grid-template-columns:1fr;}.dsb{display:none;}.rgrid{grid-template-columns:1fr;}.rscore{position:static;transform:none;margin-top:18px;}.dstats{grid-template-columns:1fr 1fr;}.tri-grid{grid-template-columns:1fr;}.sol-grid{grid-template-columns:1fr;}.qa-grid{grid-template-columns:1fr;}.sig-grid{grid-template-columns:1fr;}}
-@media(max-width:600px){.dstats{grid-template-columns:1fr;}.ntabs{display:none;}.dcontent{padding:14px;}.page{padding:14px;}}
-@media print{.nav,.rnav,.btn-p,.btn-s,.btn-g{display:none!important;}body{background:white!important;}.rcon{padding:0;max-width:100%;}}
+/* ===== RESPONSIVE — COMPREHENSIVE ===== */
+@media(max-width:1100px){
+  .admin-grid{grid-template-columns:1fr;}
+  .rgrid{grid-template-columns:1fr;}
+  .rscore{position:static;transform:none;margin-top:18px;min-width:unset;width:100%;}
+  .rhdr{padding:28px 24px;}
+  .rhdr h1{font-size:26px;}
+}
+@media(max-width:900px){
+  .fgrid{grid-template-columns:1fr;}
+  .fgrid.g3{grid-template-columns:1fr 1fr;}
+  .dsb{display:none;}
+  .dlayout{flex-direction:column;}
+  .dcontent{max-width:100%;padding:16px;}
+  .rgrid{grid-template-columns:1fr;}
+  .rscore{position:static;transform:none;margin-top:18px;width:100%;min-width:unset;}
+  .dstats{grid-template-columns:1fr 1fr;}
+  .tri-grid{grid-template-columns:1fr 1fr;}
+  .sol-grid{grid-template-columns:1fr 1fr;}
+  .qa-grid{grid-template-columns:1fr;}
+  .sig-grid{grid-template-columns:1fr;}
+  .dim-grid-r{grid-template-columns:1fr 1fr;}
+  .pgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+  .im-grid{grid-template-columns:70px repeat(3,1fr);}
+  .rcon{padding:20px 12px;}
+  .rhdr{padding:24px 18px;}
+  .rhdr h1{font-size:22px;}
+  .nav-in{padding:0 14px;}
+  .ntabs{gap:2px;}
+  .ntab{padding:7px 10px;font-size:12px;}
+  .nstat{display:none;}
+  .admin-header{flex-direction:column;gap:16px;padding:22px 20px;}
+  .admin-header>div:last-child{flex-wrap:wrap;justify-content:flex-start;}
+  .dhead{padding:22px 20px;}
+  .dhead h1{font-size:22px;}
+}
+@media(max-width:768px){
+  /* NAV: hamburger layout */
+  .nav-in{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px;}
+  .nb{flex:1;}
+  .ntabs{order:3;width:100%;overflow-x:auto;padding-bottom:4px;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+  .ntabs::-webkit-scrollbar{height:3px;}
+  .ntabs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px;}
+  .ntab{white-space:nowrap;padding:7px 12px;font-size:12px;}
+  .nright{gap:8px;}
+  .nav-user-info{display:none;}
+  .nav-user-pill{padding:5px 8px 5px 5px;}
+  .btn-out{font-size:11px;padding:6px 10px;}
+  /* Pages */
+  .page{padding:12px;}
+  .dstats{grid-template-columns:1fr 1fr;gap:12px;}
+  .sc .val{font-size:28px;}
+  .dhead{padding:18px 16px;border-radius:14px;}
+  .dhead h1{font-size:20px;}
+  /* Report page */
+  .rnav{padding:10px 14px;flex-wrap:wrap;gap:8px;}
+  .rnav>div:nth-child(2){font-size:14px;}
+  .rcon{padding:14px 10px;}
+  .rhdr{padding:20px 16px;border-radius:14px;}
+  .rhdr h1{font-size:20px;}
+  .rhdr .rco{font-size:15px;}
+  .rhdr .rmeta{flex-direction:column;gap:4px;}
+  .rscore{position:static;transform:none;}
+  /* Tables: horizontal scroll */
+  .tw{overflow-x:auto;}
+  table{min-width:600px;}
+  .tf{padding:10px 12px;}
+  .si{min-width:140px;}
+  /* Admin */
+  .admin-diag-row{flex-wrap:wrap;gap:8px;}
+  .admin-diag-prog{min-width:80px;}
+  .user-row{flex-wrap:wrap;}
+  .user-actions{width:100%;justify-content:flex-end;}
+  /* Modals */
+  .perm-box,.asgn-box,.edit-user-box,.pwd-box,.mb{padding:20px 16px;}
+  .eu-grid{grid-template-columns:1fr;}
+  .eu-field.full{grid-column:1;}
+  /* Diag layout */
+  .dlayout{flex-direction:column;}
+  .dcontent{padding:12px;}
+  /* Risk/opp rows */
+  .risk-row,.opp-row{grid-template-columns:1fr;}
+  .im-grid{grid-template-columns:60px repeat(3,1fr);font-size:10px;}
+  .im-hdr,.im-row-lbl{padding:7px 4px;font-size:9px;}
+  /* Scorecard table override — no min-width clip on small */
+  .at{min-width:500px;}
+  .team-table{min-width:500px;}
+}
+@media(max-width:600px){
+  .dstats{grid-template-columns:1fr;}
+  .fgrid.g3{grid-template-columns:1fr;}
+  .tri-grid{grid-template-columns:1fr;}
+  .sol-grid{grid-template-columns:1fr;}
+  .dim-grid-r{grid-template-columns:1fr;}
+  .doc-grid{grid-template-columns:1fr;}
+  .page{padding:10px;}
+  .dcontent{padding:10px;}
+  .ntabs{order:3;width:100%;}
+  .lc{padding:32px 20px;}
+  .lc-brand .bn{font-size:22px;}
+  /* admin header stats */
+  .admin-header>div:last-child>div{min-width:70px;padding:8px 10px;}
+  /* Step form cards */
+  .fs-card{border-radius:12px;}
+  .fsb{padding:14px;}
+  .fsh{padding:14px 16px;}
+  /* report header */
+  .rhdr::before{font-size:90px;}
+  .rft{flex-direction:column;text-align:center;}
+  .rft>div:last-child{text-align:center;}
+}
+@media print{
+  .nav,.rnav,.btn-p,.btn-s,.btn-g,.btn-d,.btn-sm,.toast,.appFooter,#appFooter{display:none!important;}
+  body{background:white!important;}
+  .rcon{padding:0;max-width:100%;}
+  .rcard{box-shadow:none;border:1px solid #e5e7eb;}
+  .rhdr{box-shadow:none;}
+}
 </style>
 </head>
 <body>
@@ -976,14 +1091,14 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
 <!-- APP FOOTER -->
 <div id="appFooter" style="display:none;background:linear-gradient(135deg,#0f172a,#1e3a8a);padding:18px 32px;text-align:center;margin-top:40px;">
   <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;background:linear-gradient(135deg,#93c5fd,#fff,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GrowthEX Partners · NEXUS 360™</div>
-  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;">hello@growthexpartners.com · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="09616c656566496e7b667e7d616c7179687b7d676c7b7a276a6664">[email&#160;protected]</a> · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
 </div>
 
 
 
 <!-- Firebase scripts moved to <head> for guaranteed load order -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ════════════════════════════════════════════════════════════════
 // NEXUS 360™ — FIREBASE BACKEND
 // ════════════════════════════════════════════════════════════════
@@ -1220,8 +1335,53 @@ async function onLoginSuccess() {
     });
   }
 
+  // ── Real-time listener: watch OWN user profile for admin-side edits ──
+  // If admin updates this user, auto-refresh their session data (after 5s countdown)
+  let _selfUserListener = null;
+  function attachSelfListener() {
+    if (_selfUserListener) FB.user(currentUser.uid).off('value', _selfUserListener);
+    _selfUserListener = FB.user(currentUser.uid).on('value', snap => {
+      const updated = snap.val();
+      if (!updated || !currentUser) return;
+      const newData = {
+        ...updated,
+        allowedSteps: updated.allowedSteps === 'ALL' ? null : JSON.parse(updated.allowedSteps || '[]')
+      };
+      // Detect meaningful changes (name, role, allowedSteps, password)
+      const changed = (
+        newData.name !== currentUser.name ||
+        newData.role !== currentUser.role ||
+        newData.u !== currentUser.u ||
+        JSON.stringify(newData.allowedSteps) !== JSON.stringify(currentUser.allowedSteps)
+      );
+      if (!changed) return;
+      // Show countdown toast and auto-refresh
+      let secs = 5;
+      const countdown = () => {
+        if (secs <= 0) {
+          Object.assign(currentUser, newData);
+          document.getElementById('navUser').textContent = currentUser.name;
+          document.getElementById('navRole').textContent = currentUser.role === 'admin' ? '⭐ Admin' : '🔹 ' + currentUser.role;
+          const av = document.getElementById('navAvatar');
+          if (av) av.textContent = currentUser.name.charAt(0).toUpperCase();
+          document.getElementById('tabAdmin').style.display = currentUser.role === 'admin' ? '' : 'none';
+          // If on diag page, re-render nav
+          if (current && document.getElementById('diagPage').style.display === 'block') renderNav();
+          toast('✅ Your account was updated by Admin — profile refreshed!', 'success');
+          return;
+        }
+        toast(`🔄 Admin updated your profile — refreshing in ${secs}s...`, 'info');
+        secs--;
+        setTimeout(countdown, 1000);
+      };
+      countdown();
+    });
+  }
+  attachSelfListener();
+
   toast('Welcome back, ' + currentUser.name + ' 👋', 'success');
   const ft = document.getElementById('appFooter'); if (ft) ft.style.display = 'block';
+  pushNavState('dashboard');
   setTimeout(() => {
     document.querySelectorAll('.sc').forEach((c,i) => {
       c.style.opacity='0'; c.style.transform='translateY(20px)';
@@ -1242,6 +1402,9 @@ function doLogout() {
   if (_usersListener)   FB.users().off('value', _usersListener);
   if (_allDiagListener) FB.allDiagnoses().off('value', _allDiagListener);
   if (_asgnListener)    FB.assignments().off('value', _asgnListener);
+  if (typeof _selfUserListener !== 'undefined' && _selfUserListener) {
+    try { FB.user(currentUser?.uid).off('value', _selfUserListener); } catch(e){}
+  }
   _diagListener = _usersListener = _allDiagListener = _asgnListener = null;
 
   currentUser = null; diagnoses = []; counter = 0;
@@ -1746,6 +1909,7 @@ function openDiag() {
   document.getElementById('app').style.display='none';
   document.getElementById('diagPage').style.display='block';
   document.getElementById('reportPage').style.display='none';
+  pushNavState('diag');
   renderStep();
 }
 
@@ -2775,9 +2939,9 @@ function updateDash(){
 function showTab(tab){
   ['pageA','pageR','pageAdmin'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
   ['tabA','tabR','tabAdmin'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
-  if(tab==='analysis'){document.getElementById('pageA').classList.add('active');document.getElementById('tabA').classList.add('active');updateDash();}
-  else if(tab==='reports'){document.getElementById('pageR').classList.add('active');document.getElementById('tabR').classList.add('active');renderRtable();document.getElementById('rts').textContent=new Date().toLocaleString();}
-  else if(tab==='admin'){document.getElementById('pageAdmin').classList.add('active');document.getElementById('tabAdmin').classList.add('active');renderAdminPanel();switchAdminTab('users');}
+  if(tab==='analysis'){document.getElementById('pageA').classList.add('active');document.getElementById('tabA').classList.add('active');updateDash();pushNavState('dashboard');}
+  else if(tab==='reports'){document.getElementById('pageR').classList.add('active');document.getElementById('tabR').classList.add('active');renderRtable();document.getElementById('rts').textContent=new Date().toLocaleString();pushNavState('reports');}
+  else if(tab==='admin'){document.getElementById('pageAdmin').classList.add('active');document.getElementById('tabAdmin').classList.add('active');renderAdminPanel();switchAdminTab('users');pushNavState('admin');}
 }
 function renderAtable(){
   const srch=(document.getElementById('srchA')?.value||'').toLowerCase();
@@ -2858,9 +3022,10 @@ function viewReport(id){
   document.getElementById('app').style.display='none';
   document.getElementById('diagPage').style.display='none';
   document.getElementById('reportPage').style.display='block';
+  pushNavState('report');
   buildReport(diag);window.scrollTo(0,0);
 }
-function closeReport(){document.getElementById('reportPage').style.display='none';document.getElementById('app').style.display='block';updateDash();showTab('reports');window._adminViewDiag=null;}
+function closeReport(){document.getElementById('reportPage').style.display='none';document.getElementById('app').style.display='block';updateDash();showTab('reports');window._adminViewDiag=null;pushNavState('reports');}
 function buildReport(d){
   const data=d.data||{};const scores=d.scores||{};const ov=d.overall||0;const lv=maturity(ov);
   const dt=new Date(d.completedAt||d.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
@@ -3097,7 +3262,55 @@ function toast(msg,type='info'){
 }
 
 // INIT
-window.addEventListener('beforeunload',()=>{if(document.getElementById('diagPage').style.display==='block'){collectData();save();}});
+window.addEventListener('beforeunload', e => {
+  if (document.getElementById('diagPage').style.display === 'block') {
+    collectData(); save();
+    e.preventDefault();
+    e.returnValue = 'You have an unsaved diagnosis open. Are you sure you want to leave?';
+    return e.returnValue;
+  }
+  if (document.getElementById('reportPage').style.display === 'block') {
+    e.preventDefault();
+    e.returnValue = 'Leave the report view?';
+    return e.returnValue;
+  }
+});
+
+// ── History-based back-button guard ──
+// Push a state on login/page navigation so back button goes to previous INTERNAL state
+// rather than triggering a browser close or full page reload
+function pushNavState(state) {
+  history.pushState({ nexus: state }, '', window.location.href.split('#')[0] + '#' + state);
+}
+window.addEventListener('popstate', e => {
+  const st = e.state?.nexus;
+  if (!currentUser) return; // Not logged in — let browser handle
+  if (document.getElementById('reportPage').style.display === 'block') {
+    // Back from report → go to reports tab
+    closeReport();
+    pushNavState('reports');
+    return;
+  }
+  if (document.getElementById('diagPage').style.display === 'block') {
+    // Back from diagnosis → confirm exit
+    openModal('⬅ Exit Diagnosis?', 'Your progress is auto-saved. Go back to the Dashboard?', async () => {
+      collectData(); await save();
+      document.getElementById('diagPage').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      updateDash();
+      pushNavState('dashboard');
+    }, '✅ Yes, Exit');
+    // Re-push state so the back doesn't happen instantly
+    pushNavState('diag');
+    return;
+  }
+  if (document.getElementById('app').style.display === 'block') {
+    // On main app — if they hit back, keep them on dashboard
+    pushNavState('dashboard');
+    return;
+  }
+});
+
 try{document.getElementById('rts').textContent=new Date().toLocaleString();}catch(e){}
 
 // ═══════════════════════════════════════════════
@@ -3209,14 +3422,4 @@ try{document.getElementById('rts').textContent=new Date().toLocaleString();}catc
   if(lpEl) lpEl.addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
   if(luEl) luEl.addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
 
-  // ── Light rays ──
-  const rays = document.querySelectorAll('.ls-ray');
-  rays.forEach((r,i)=>{
-    r.style.animationDuration = (5+i*1.5)+'s';
-    r.style.animationDelay   = (-i*2)+'s';
-  });
-
-})(); // end initLoginFX
-</script>
-</body>
-</html>
+  // ── Light rays ─�
