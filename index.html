@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <title>GrowthEX NEXUS 360™ — Business Diagnostic Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -711,7 +714,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
       <div style="width:1px;height:20px;background:rgba(37,99,235,.15);"></div>
       <button class="btn-p" onclick="newDiag()" style="padding:6px 16px;font-size:11px;">＋ New Diagnosis</button>
       <button class="btn-sm" onclick="showTab('reports')" style="font-size:11px;">📊 All Reports</button>
-      <div style="margin-left:auto;font-size:11px;color:var(--g5);">Data stored locally · Secure · No cloud upload</div>
+      <div style="margin-left:auto;font-size:11px;color:var(--g5);">Firebase Live Sync · Secure · All data saved to cloud</div>
     </div>
     <div class="tw">
       <div class="tf">
@@ -965,7 +968,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
   <div class="mb">
     <div class="mt" id="modT">Confirm</div>
     <div class="mbdy" id="modB"></div>
-    <div class="mac"><button class="btn-s" onclick="closeModal()">Cancel</button><button class="btn-d" id="modConf">Confirm Delete</button></div>
+    <div class="mac"><button class="btn-s" onclick="closeModal()">Cancel</button><button class="btn-d" id="modConf" onclick="if(typeof modCb==='function'){modCb();closeModal();}">Confirm Delete</button></div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -973,15 +976,12 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
 <!-- APP FOOTER -->
 <div id="appFooter" style="display:none;background:linear-gradient(135deg,#0f172a,#1e3a8a);padding:18px 32px;text-align:center;margin-top:40px;">
   <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;background:linear-gradient(135deg,#93c5fd,#fff,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GrowthEX Partners · NEXUS 360™</div>
-  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="731b161f1f1c3314011c04071b160b031201071d1601005d101c1e">[email&#160;protected]</a> · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;">hello@growthexpartners.com · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
 </div>
 
 
 
-<!-- External scripts: load order guaranteed before inline code -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- Firebase scripts moved to <head> for guaranteed load order -->
 
 <script>
 // ════════════════════════════════════════════════════════════════
@@ -1491,6 +1491,7 @@ async function renderAdminDiagList() {
         <span class="badge ${d.status}" style="font-size:9px;text-align:center">${d.status.replace('-',' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
         ${d._ownerRole!=='admin'?`<button class="btn-sm" onclick="openAsgnModal('${d.id}','${d._ownerUid}')">🔓 Assign Steps</button>`:''}
         <button class="btn-sm" style="background:#F0FDF4;color:#065F46" onclick="adminViewDiag('${d._ownerUid}','${d.id}')">👁 View</button>
+        <button class="btn-d" style="padding:4px 8px;font-size:10px" onclick="adminConfDel('${d.id}','${d._ownerUid}','${n.replace(/'/g,'')}')">🗑 Delete</button>
       </div>
     </div>`;
   }).join('');
@@ -1748,7 +1749,7 @@ function openDiag() {
   renderStep();
 }
 
-async function exitDiag() {
+async function exitDiag() { openModal("Save & Exit","Your progress is auto-saved to Firebase. Click Confirm to return to dashboard.", async ()=>{ collectData(); await save(); document.getElementById("diagPage").style.display="none"; document.getElementById("app").style.display="block"; updateDash(); },"✅ Confirm & Exit"); return;
   if (confirm('Save and exit? Your progress is saved automatically.')) {
     collectData(); await save();
     document.getElementById('diagPage').style.display='none';
@@ -2993,7 +2994,9 @@ async function downloadPDF(){
   toast('Generating PDF...','info');
   try{
     const{jsPDF}=window.jspdf;const doc=new jsPDF('p','mm','a4');
-    const diag=diagnoses.find(d=>d.id===reportId);if(!diag)return;
+    // Support admin viewing another user's diagnosis
+    let diag = window._adminViewDiag || diagnoses.find(d=>d.id===reportId);
+    if(!diag){ toast('Diagnosis data not found','error'); return; }
     const data=diag.data||{};const scores=diag.scores||{};const ov=diag.overall||0;const lv=maturity(ov);
     const W=210,m=16,col=W-m*2;let y=0;
     const addPage=()=>{doc.addPage();y=18;};
@@ -3058,17 +3061,33 @@ async function downloadPDF(){
 // ═══════════════════════════════════════════════
 // DELETE & MODAL
 // ═══════════════════════════════════════════════
-function confDel(id){
+function confDel(id, ownerUid){
   const n=diagnoses.find(d=>d.id===id)?.data?.businessName||id;
-  openModal('Delete Diagnosis',`Permanently delete diagnosis for <strong>${n}</strong>? This cannot be undone.`, async ()=>{
-    await FB.diag(currentUser.uid, id).remove();
+  openModal('🗑 Delete Diagnosis',`Permanently delete diagnosis for <strong>${n}</strong>?<br><br>This action <strong>cannot be undone</strong> and all data will be lost from Firebase.`, async ()=>{
+    const uid = ownerUid || currentUser.uid;
+    await FB.diag(uid, id).remove();
     diagnoses=diagnoses.filter(d=>d.id!==id);
-    updateDash();renderRtable();toast('Deleted','info');
+    updateDash();renderRtable();renderAtable();toast('Diagnosis deleted successfully','info');
   });
 }
-function openModal(t,b,cb){document.getElementById('modT').textContent=t;document.getElementById('modB').innerHTML=b;document.getElementById('modal').classList.add('open');modCb=cb;}
+
+function adminConfDel(id, ownerUid, name){
+  openModal('🗑 Delete Diagnosis',`Permanently delete diagnosis for <strong>${name||id}</strong>?<br><br>This action <strong>cannot be undone</strong> and all Firebase data will be lost.`, async ()=>{
+    await FB.diag(ownerUid, id).remove();
+    toast('Diagnosis deleted','info');
+    // refresh admin panel
+    switchAdminTab('diag');
+  });
+}
+function openModal(t,b,cb,btnLabel){
+  document.getElementById('modT').textContent=t;
+  document.getElementById('modB').innerHTML=b;
+  document.getElementById('modConf').textContent=btnLabel||'Confirm Delete';
+  document.getElementById('modConf').style.background=btnLabel&&!btnLabel.includes('Delete')?'linear-gradient(135deg,#1E3A8A,#2563EB)':'';
+  document.getElementById('modal').classList.add('open');
+  modCb=cb;
+}
 function closeModal(){document.getElementById('modal').classList.remove('open');modCb=null;}
-// modConf handled in HTML onclick
 
 // TOAST
 function toast(msg,type='info'){
