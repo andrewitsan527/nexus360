@@ -610,7 +610,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
 .doc-item label{font-size:11px;cursor:pointer;color:var(--g7);line-height:1.4;}
 .doc-item .sub-hint{font-size:10px;color:var(--g5);font-style:italic;display:block;}
 
-/* ===== RESPONSIVE — COMPREHENSIVE ===== */
+/* ===== RESPONSIVE ===== */
 @media(max-width:1100px){
   .admin-grid{grid-template-columns:1fr;}
   .rgrid{grid-template-columns:1fr;}
@@ -647,7 +647,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
   .dhead h1{font-size:22px;}
 }
 @media(max-width:768px){
-  /* NAV: hamburger layout */
   .nav-in{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px;}
   .nb{flex:1;}
   .ntabs{order:3;width:100%;overflow-x:auto;padding-bottom:4px;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
@@ -658,43 +657,33 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
   .nav-user-info{display:none;}
   .nav-user-pill{padding:5px 8px 5px 5px;}
   .btn-out{font-size:11px;padding:6px 10px;}
-  /* Pages */
   .page{padding:12px;}
   .dstats{grid-template-columns:1fr 1fr;gap:12px;}
   .sc .val{font-size:28px;}
   .dhead{padding:18px 16px;border-radius:14px;}
   .dhead h1{font-size:20px;}
-  /* Report page */
   .rnav{padding:10px 14px;flex-wrap:wrap;gap:8px;}
-  .rnav>div:nth-child(2){font-size:14px;}
   .rcon{padding:14px 10px;}
   .rhdr{padding:20px 16px;border-radius:14px;}
   .rhdr h1{font-size:20px;}
   .rhdr .rco{font-size:15px;}
   .rhdr .rmeta{flex-direction:column;gap:4px;}
-  .rscore{position:static;transform:none;}
-  /* Tables: horizontal scroll */
   .tw{overflow-x:auto;}
-  table{min-width:600px;}
+  table{min-width:580px;}
   .tf{padding:10px 12px;}
   .si{min-width:140px;}
-  /* Admin */
   .admin-diag-row{flex-wrap:wrap;gap:8px;}
   .admin-diag-prog{min-width:80px;}
   .user-row{flex-wrap:wrap;}
-  .user-actions{width:100%;justify-content:flex-end;}
-  /* Modals */
+  .user-actions{width:100%;justify-content:flex-end;margin-top:4px;}
   .perm-box,.asgn-box,.edit-user-box,.pwd-box,.mb{padding:20px 16px;}
   .eu-grid{grid-template-columns:1fr;}
   .eu-field.full{grid-column:1;}
-  /* Diag layout */
   .dlayout{flex-direction:column;}
   .dcontent{padding:12px;}
-  /* Risk/opp rows */
   .risk-row,.opp-row{grid-template-columns:1fr;}
   .im-grid{grid-template-columns:60px repeat(3,1fr);font-size:10px;}
   .im-hdr,.im-row-lbl{padding:7px 4px;font-size:9px;}
-  /* Scorecard table override — no min-width clip on small */
   .at{min-width:500px;}
   .team-table{min-width:500px;}
 }
@@ -707,22 +696,18 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
   .doc-grid{grid-template-columns:1fr;}
   .page{padding:10px;}
   .dcontent{padding:10px;}
-  .ntabs{order:3;width:100%;}
   .lc{padding:32px 20px;}
   .lc-brand .bn{font-size:22px;}
-  /* admin header stats */
   .admin-header>div:last-child>div{min-width:70px;padding:8px 10px;}
-  /* Step form cards */
   .fs-card{border-radius:12px;}
   .fsb{padding:14px;}
   .fsh{padding:14px 16px;}
-  /* report header */
   .rhdr::before{font-size:90px;}
   .rft{flex-direction:column;text-align:center;}
   .rft>div:last-child{text-align:center;}
 }
 @media print{
-  .nav,.rnav,.btn-p,.btn-s,.btn-g,.btn-d,.btn-sm,.toast,.appFooter,#appFooter{display:none!important;}
+  .nav,.rnav,.btn-p,.btn-s,.btn-g,.btn-d,.btn-sm,#toast,#appFooter{display:none!important;}
   body{background:white!important;}
   .rcon{padding:0;max-width:100%;}
   .rcard{box-shadow:none;border:1px solid #e5e7eb;}
@@ -1091,14 +1076,14 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
 <!-- APP FOOTER -->
 <div id="appFooter" style="display:none;background:linear-gradient(135deg,#0f172a,#1e3a8a);padding:18px 32px;text-align:center;margin-top:40px;">
   <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;background:linear-gradient(135deg,#93c5fd,#fff,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GrowthEX Partners · NEXUS 360™</div>
-  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="09616c656566496e7b667e7d616c7179687b7d676c7b7a276a6664">[email&#160;protected]</a> · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:1px;">hello@growthexpartners.com · +91 96700 24172 · growthexpartners.com · © 2026 All Rights Reserved</div>
 </div>
 
 
 
 <!-- Firebase scripts moved to <head> for guaranteed load order -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ════════════════════════════════════════════════════════════════
 // NEXUS 360™ — FIREBASE BACKEND
 // ════════════════════════════════════════════════════════════════
@@ -1239,18 +1224,21 @@ function getDiagAllowedStepsFromCache(diagId, uid) {
 async function doLogin() {
   const uVal = document.getElementById('lu').value.trim();
   const pVal = document.getElementById('lp').value.trim();
-  if (!uVal || !pVal) return;
+  if (!uVal || !pVal) { toast('Please enter username and password','error'); return; }
 
   const loginBtn = document.getElementById('loginBtn');
+  const errEl = document.getElementById('le');
   loginBtn.textContent = '⏳ Connecting...';
   loginBtn.disabled = true;
+  errEl.style.display = 'none';
 
   try {
     await bootstrapAccounts();
-    const snap = await FB.users().orderByChild('u').equalTo(uVal).once('value');
-    const val  = snap.val();
-    if (!val) throw new Error('not_found');
-    const userRaw = Object.values(val)[0];
+    // Fetch all users and match by username (no index needed)
+    const allSnap = await FB.users().once('value');
+    const allUsers = allSnap.val() || {};
+    const userRaw = Object.values(allUsers).find(u => u.u === uVal);
+    if (!userRaw) throw new Error('not_found');
     if (userRaw.p !== pVal) throw new Error('wrong_pass');
 
     currentUser = {
@@ -1261,7 +1249,7 @@ async function doLogin() {
     await onLoginSuccess();
   } catch(e) {
     console.error('Login error:', e);
-    document.getElementById('le').style.display = 'block';
+    errEl.style.display = 'block';
     loginBtn.textContent = '🚀 Enter the Platform →';
     loginBtn.disabled = false;
   }
@@ -1335,53 +1323,10 @@ async function onLoginSuccess() {
     });
   }
 
-  // ── Real-time listener: watch OWN user profile for admin-side edits ──
-  // If admin updates this user, auto-refresh their session data (after 5s countdown)
-  let _selfUserListener = null;
-  function attachSelfListener() {
-    if (_selfUserListener) FB.user(currentUser.uid).off('value', _selfUserListener);
-    _selfUserListener = FB.user(currentUser.uid).on('value', snap => {
-      const updated = snap.val();
-      if (!updated || !currentUser) return;
-      const newData = {
-        ...updated,
-        allowedSteps: updated.allowedSteps === 'ALL' ? null : JSON.parse(updated.allowedSteps || '[]')
-      };
-      // Detect meaningful changes (name, role, allowedSteps, password)
-      const changed = (
-        newData.name !== currentUser.name ||
-        newData.role !== currentUser.role ||
-        newData.u !== currentUser.u ||
-        JSON.stringify(newData.allowedSteps) !== JSON.stringify(currentUser.allowedSteps)
-      );
-      if (!changed) return;
-      // Show countdown toast and auto-refresh
-      let secs = 5;
-      const countdown = () => {
-        if (secs <= 0) {
-          Object.assign(currentUser, newData);
-          document.getElementById('navUser').textContent = currentUser.name;
-          document.getElementById('navRole').textContent = currentUser.role === 'admin' ? '⭐ Admin' : '🔹 ' + currentUser.role;
-          const av = document.getElementById('navAvatar');
-          if (av) av.textContent = currentUser.name.charAt(0).toUpperCase();
-          document.getElementById('tabAdmin').style.display = currentUser.role === 'admin' ? '' : 'none';
-          // If on diag page, re-render nav
-          if (current && document.getElementById('diagPage').style.display === 'block') renderNav();
-          toast('✅ Your account was updated by Admin — profile refreshed!', 'success');
-          return;
-        }
-        toast(`🔄 Admin updated your profile — refreshing in ${secs}s...`, 'info');
-        secs--;
-        setTimeout(countdown, 1000);
-      };
-      countdown();
-    });
-  }
-  attachSelfListener();
-
   toast('Welcome back, ' + currentUser.name + ' 👋', 'success');
   const ft = document.getElementById('appFooter'); if (ft) ft.style.display = 'block';
   pushNavState('dashboard');
+  attachSelfListener();
   setTimeout(() => {
     document.querySelectorAll('.sc').forEach((c,i) => {
       c.style.opacity='0'; c.style.transform='translateY(20px)';
@@ -1397,14 +1342,11 @@ async function onLoginSuccess() {
 }
 
 function doLogout() {
-  // Detach all Firebase listeners
   if (_diagListener)    FB.diagnoses(currentUser?.uid).off('value', _diagListener);
   if (_usersListener)   FB.users().off('value', _usersListener);
   if (_allDiagListener) FB.allDiagnoses().off('value', _allDiagListener);
   if (_asgnListener)    FB.assignments().off('value', _asgnListener);
-  if (typeof _selfUserListener !== 'undefined' && _selfUserListener) {
-    try { FB.user(currentUser?.uid).off('value', _selfUserListener); } catch(e){}
-  }
+  if (_selfUserListener) { try { FB.user(currentUser?.uid).off('value', _selfUserListener); } catch(e){} _selfUserListener = null; }
   _diagListener = _usersListener = _allDiagListener = _asgnListener = null;
 
   currentUser = null; diagnoses = []; counter = 0;
@@ -3014,7 +2956,6 @@ function maturity(s){
 // REPORT VIEW
 // ═══════════════════════════════════════════════
 function viewReport(id){
-  // If admin clicked from admin panel view, use cached diag
   const diag = window._adminViewDiag || diagnoses.find(d=>d.id===id);
   window._adminViewDiag = null;
   if(!diag)return;
@@ -3025,7 +2966,7 @@ function viewReport(id){
   pushNavState('report');
   buildReport(diag);window.scrollTo(0,0);
 }
-function closeReport(){document.getElementById('reportPage').style.display='none';document.getElementById('app').style.display='block';updateDash();showTab('reports');window._adminViewDiag=null;pushNavState('reports');}
+function closeReport(){document.getElementById('reportPage').style.display='none';document.getElementById('app').style.display='block';updateDash();showTab('reports');window._adminViewDiag=null;}
 function buildReport(d){
   const data=d.data||{};const scores=d.scores||{};const ov=d.overall||0;const lv=maturity(ov);
   const dt=new Date(d.completedAt||d.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
@@ -3261,57 +3202,87 @@ function toast(msg,type='info'){
   setTimeout(()=>t.classList.remove('show'),3500);
 }
 
-// INIT
+// ═══════════════════════════════════════════════
+// INIT & NAVIGATION GUARD
+// ═══════════════════════════════════════════════
+
+// Warn before closing/refreshing if work is open
 window.addEventListener('beforeunload', e => {
   if (document.getElementById('diagPage').style.display === 'block') {
     collectData(); save();
     e.preventDefault();
-    e.returnValue = 'You have an unsaved diagnosis open. Are you sure you want to leave?';
-    return e.returnValue;
-  }
-  if (document.getElementById('reportPage').style.display === 'block') {
-    e.preventDefault();
-    e.returnValue = 'Leave the report view?';
+    e.returnValue = 'You have an unsaved diagnosis open. Leave anyway?';
     return e.returnValue;
   }
 });
 
-// ── History-based back-button guard ──
-// Push a state on login/page navigation so back button goes to previous INTERNAL state
-// rather than triggering a browser close or full page reload
+// Push a state so browser back navigates WITHIN the app
 function pushNavState(state) {
-  history.pushState({ nexus: state }, '', window.location.href.split('#')[0] + '#' + state);
+  try { history.pushState({ nexus: state }, '', window.location.pathname + window.location.search + '#' + state); } catch(e) {}
 }
+
 window.addEventListener('popstate', e => {
-  const st = e.state?.nexus;
-  if (!currentUser) return; // Not logged in — let browser handle
+  if (!currentUser) return;
   if (document.getElementById('reportPage').style.display === 'block') {
-    // Back from report → go to reports tab
-    closeReport();
-    pushNavState('reports');
-    return;
+    closeReport(); return;
   }
   if (document.getElementById('diagPage').style.display === 'block') {
-    // Back from diagnosis → confirm exit
-    openModal('⬅ Exit Diagnosis?', 'Your progress is auto-saved. Go back to the Dashboard?', async () => {
+    openModal('⬅ Exit Diagnosis?', 'Your progress is auto-saved to Firebase. Return to Dashboard?', async () => {
       collectData(); await save();
       document.getElementById('diagPage').style.display = 'none';
       document.getElementById('app').style.display = 'block';
-      updateDash();
-      pushNavState('dashboard');
+      updateDash(); pushNavState('dashboard');
     }, '✅ Yes, Exit');
-    // Re-push state so the back doesn't happen instantly
     pushNavState('diag');
     return;
   }
   if (document.getElementById('app').style.display === 'block') {
-    // On main app — if they hit back, keep them on dashboard
     pushNavState('dashboard');
-    return;
   }
 });
 
-try{document.getElementById('rts').textContent=new Date().toLocaleString();}catch(e){}
+// Real-time listener: watch OWN user record so admin changes auto-apply (with 5s countdown)
+let _selfUserListener = null;
+function attachSelfListener() {
+  if (!currentUser) return;
+  if (_selfUserListener) { try { FB.user(currentUser.uid).off('value', _selfUserListener); } catch(e){} }
+  let firstCall = true;
+  _selfUserListener = FB.user(currentUser.uid).on('value', snap => {
+    if (firstCall) { firstCall = false; return; } // skip initial read
+    const updated = snap.val();
+    if (!updated || !currentUser) return;
+    const newData = {
+      ...updated,
+      allowedSteps: updated.allowedSteps === 'ALL' ? null : JSON.parse(updated.allowedSteps || '[]')
+    };
+    const changed = (
+      newData.name !== currentUser.name ||
+      newData.role !== currentUser.role ||
+      newData.u !== currentUser.u ||
+      JSON.stringify(newData.allowedSteps) !== JSON.stringify(currentUser.allowedSteps)
+    );
+    if (!changed) return;
+    let secs = 5;
+    const tick = () => {
+      if (secs <= 0) {
+        Object.assign(currentUser, newData);
+        document.getElementById('navUser').textContent = currentUser.name;
+        document.getElementById('navRole').textContent = currentUser.role === 'admin' ? '⭐ Admin' : '🔹 ' + currentUser.role;
+        const av = document.getElementById('navAvatar'); if (av) av.textContent = currentUser.name.charAt(0).toUpperCase();
+        document.getElementById('tabAdmin').style.display = currentUser.role === 'admin' ? '' : 'none';
+        if (current && document.getElementById('diagPage').style.display === 'block') renderNav();
+        toast('✅ Your profile was updated by Admin!', 'success');
+        return;
+      }
+      toast('🔄 Admin updated your profile — refreshing in ' + secs + 's...', 'info');
+      secs--;
+      setTimeout(tick, 1000);
+    };
+    tick();
+  });
+}
+
+try { document.getElementById('rts').textContent = new Date().toLocaleString(); } catch(e) {}
 
 // ═══════════════════════════════════════════════
 // LOGIN SCREEN — PARTICLE & ANIMATION INIT
@@ -3422,4 +3393,16 @@ try{document.getElementById('rts').textContent=new Date().toLocaleString();}catc
   if(lpEl) lpEl.addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
   if(luEl) luEl.addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
 
-  // ── Light rays ─�
+  
+  // ── Light rays (login screen decoration) ──
+  const rays = document.querySelectorAll('#loginScreen .ls-ray');
+  rays.forEach((ray, i) => {
+    ray.style.animationDuration = (5 + i * 1.5) + 's';
+    ray.style.animationDelay = (-i * 2) + 's';
+  });
+
+})(); // end initLoginFX
+
+</script>
+</body>
+</html>
